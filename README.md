@@ -155,11 +155,16 @@ http://127.0.0.1:5000
 
 ---
 
-## 5. Default Accounts & Credentials
+## 5. Demo Accounts & Access
 
-| Role | Email | Password | Description |
-|---|---|---|---|
-| **Receptionist** | `receptionist@mediflow.ai` | `Reception@12345` | Front Desk, Queue & Hospital Operations (Sarah Jenkins) |
-| **Doctor** | `dr.smith@mediflow.ai` | `Doctor@12345` | General Practice Physician Station |
-| **Doctor** | `dr.patel@mediflow.ai` | `Doctor@12345` | Cardiology Physician Station |
-| **Patient** | `patient@mediflow.ai` | `Patient@12345` | Patient Health Portal & Symptom Screening (Michael Chen) |
+MediFlow AI supports three user roles:
+
+- **Receptionist:** Hospital operations, queue management and staff administration.
+- **Doctor:** Patient consultations, clinical records and treatment management.
+- **Patient:** Health portal, symptom assessment and consultation requests.
+
+For local testing, use the demo accounts configured by the database initialization process.
+
+**Security note:** Default passwords and database credentials should not be published in a public repository. Configure account credentials securely in your local environment and change any default passwords before deployment.
+=======
+>>>>>>> 5a7c8bd14211d5f4c6789948e3b0d0882adec67f
