@@ -1,18 +1,18 @@
-# HospitalFlow AI
+# MediFlow AI
 ## AI-Powered Hospital Queue Management, Multi-Disease Symptom Checker & Clinical Workflow System
 
-HospitalFlow AI is a comprehensive, production-ready healthcare web application engineered to optimize clinical patient flow, eliminate outpatient and emergency crowding, manage priority queues across hospital departments, and provide AI-based clinical triage.
+MediFlow AI is a comprehensive, production-ready healthcare web application engineered to optimize clinical patient flow, eliminate outpatient and emergency crowding, manage priority queues across hospital departments, and provide AI-based clinical triage.
 
 ---
 
 ## 1. Architecture: The 3 Core Roles
 
-HospitalFlow AI operates on a clean **3-role operational architecture**:
+MediFlow AI operates on a clean **3-role operational architecture**:
 1. **Receptionist** (Hospital Operations & Clinical Intake Lead)
 2. **Doctor** (Attending Physician Consultation Station)
 3. **Patient** (Patient Health Portal, AI Symptom Checker & Live Queue Tracker)
 
-> **Architectural Note:** In accordance with the project specification, the legacy Admin role has been completely removed. All administrative, department configuration, staff/doctor provisioning, hospital settings, and dual-model machine learning governance have been unified into the **Receptionist** portal. Legacy `/admin/*` routes redirect cleanly to `/receptionist/*`.
+> **Architectural Note:** In accordance with the project specification, the legacy Admin role has been completely removed. All administrative, department configuration, staff/doctor provisioning, hospital settings, and dual-model machine learning governance have been unified into the **Receptionist** portal. Legacy `/admin/*` routes redirect cleanly to `/receptionist/*`. Exactly one Receptionist account is retained for operations.
 
 ---
 
@@ -105,7 +105,7 @@ HospitalFlow AI operates on a clean **3-role operational architecture**:
 - **Database**: MySQL / MariaDB (XAMPP localhost:3306) & SQLite (In-Memory for Automated Pytest)
 - **Machine Learning**: scikit-learn, joblib, pandas, NumPy, matplotlib
 - **Frontend**: Responsive Healthcare SaaS UI, Custom Clean Design System (Navy `#0f172a`, Teal `#0d9488`, Slate), Chart.js 4.4, Native JavaScript ES6+ (No bulky framework bloat)
-- **Testing**: pytest (68 comprehensive automated unit and integration tests)
+- **Testing**: pytest (76 comprehensive automated unit and integration tests)
 
 ---
 
@@ -123,14 +123,16 @@ python database/init_db.py
 ```
 This applies all non-destructive migrations:
 - Migrates existing accounts to the 3-role schema (`receptionist`, `doctor`, `patient`).
-- Creates `symptom_assessments` and `consultation_requests` tables.
-- Seeds clinical departments and seed staff.
+- Safely updates database records, hospital settings, and staff emails to `@mediflow.ai`.
+- Consolidates duplicate receptionist accounts into Sarah Jenkins.
+- Creates `symptom_assessments`, `consultation_requests`, and `doctor_registration_requests` tables.
+- Seeds clinical departments and default staff.
 
 ### Step 3: Run Full Automated Test Suite
 ```bash
 python -m pytest -v
 ```
-All **75 tests** run in isolated in-memory SQLite and pass with 100% success rate:
+All **76 tests** run in isolated in-memory SQLite and pass with 100% success rate:
 - `tests/test_doctor_registration.py` (Physician self-registration, pending status intercept, receptionist approval/rejection)
 - `tests/test_symptom_and_consultations.py` (Landing page, ML symptom checker, red flags, requests)
 - `tests/test_doctor.py` (Doctor portal, chart, prescriptions, referrals, follow-up, availability, RBAC)
@@ -153,13 +155,11 @@ http://127.0.0.1:5000
 
 ---
 
-## 5. Seed Accounts & Credentials
+## 5. Default Accounts & Credentials
 
 | Role | Email | Password | Description |
 |---|---|---|---|
-| **Receptionist** | `receptionist@hospitalflow.ai` | `Reception@12345` | Front Desk, Queue & Hospital Operations |
-| **Receptionist (Lead)** | `admin@hospitalflow.ai` | `Admin@12345` | Migrated Operations Account (Full Managerial Access) |
-| **Doctor** | `doctor.chen@hospitalflow.ai` | `Doctor@12345` | General Practice Physician Station |
-| **Doctor** | `doctor.patel@hospitalflow.ai` | `Doctor@12345` | Cardiology Physician Station |
-| **Patient** | `patient@hospitalflow.ai` | `Patient@12345` | Patient Health Portal & Symptom Screening |
-
+| **Receptionist** | `receptionist@mediflow.ai` | `Reception@12345` | Front Desk, Queue & Hospital Operations (Sarah Jenkins) |
+| **Doctor** | `dr.smith@mediflow.ai` | `Doctor@12345` | General Practice Physician Station |
+| **Doctor** | `dr.patel@mediflow.ai` | `Doctor@12345` | Cardiology Physician Station |
+| **Patient** | `patient@mediflow.ai` | `Patient@12345` | Patient Health Portal & Symptom Screening (Michael Chen) |
