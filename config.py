@@ -7,7 +7,7 @@ load_dotenv()
 
 class Config:
     """Base application configuration."""
-    SECRET_KEY = os.getenv('SECRET_KEY', 'hospitalflow_ai_default_secret_dev_key')
+    SECRET_KEY = os.getenv('SECRET_KEY', 'mediflow_ai_default_secret_dev_key')
     
     # Database configuration
     DB_USER = os.getenv('DB_USER', 'root')

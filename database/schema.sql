@@ -1,4 +1,4 @@
--- HospitalFlow AI Database Schema
+-- MediFlow AI Database Schema
 -- Compatible with MySQL / MariaDB (XAMPP)
 
 CREATE DATABASE IF NOT EXISTS hospitalflow_ai CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -167,10 +167,10 @@ CREATE TABLE IF NOT EXISTS contact_requests (
 -- 7. Hospital Settings Table
 CREATE TABLE IF NOT EXISTS hospital_settings (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    hospital_name VARCHAR(150) NOT NULL DEFAULT 'HospitalFlow General Hospital & Medical Center',
+    hospital_name VARCHAR(150) NOT NULL DEFAULT 'MediFlow General Hospital & Medical Center',
     phone VARCHAR(30) NOT NULL DEFAULT '+1 (555) 019-2830',
     emergency_phone VARCHAR(30) NOT NULL DEFAULT '+1 (555) 911-3569',
-    email VARCHAR(120) NOT NULL DEFAULT 'care@hospitalflow.ai',
+    email VARCHAR(120) NOT NULL DEFAULT 'care@mediflow.ai',
     address VARCHAR(255) NOT NULL DEFAULT '1200 Health Science Boulevard, Suite 400, Metro City, MC 98101',
     opening_hours VARCHAR(255) NOT NULL DEFAULT '24/7 Emergency Care | OPD: Mon - Sat 8:00 AM - 8:00 PM',
     directions_url VARCHAR(255) NULL DEFAULT 'https://maps.google.com',

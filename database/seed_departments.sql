@@ -1,4 +1,4 @@
--- HospitalFlow AI Department Seed Data
+-- MediFlow AI Department Seed Data
 USE hospitalflow_ai;
 
 INSERT INTO departments (department_name, code, description, is_active) VALUES

@@ -1,7 +1,7 @@
 """
 models/db_models.py
 -------------------
-SQLAlchemy ORM models representing HospitalFlow AI database entities.
+SQLAlchemy ORM models representing MediFlow AI database entities.
 Updated with patient profiles, visit health concerns, smart queue statuses,
 audit trails, and hospital contact requests.
 """
@@ -373,10 +373,10 @@ class HospitalSetting(db.Model):
     __tablename__ = 'hospital_settings'
 
     id = db.Column(db.Integer, primary_key=True)
-    hospital_name = db.Column(db.String(150), nullable=False, default='HospitalFlow General Hospital & Medical Center')
+    hospital_name = db.Column(db.String(150), nullable=False, default='MediFlow General Hospital & Medical Center')
     phone = db.Column(db.String(30), nullable=False, default='+1 (555) 019-2830')
     emergency_phone = db.Column(db.String(30), nullable=False, default='+1 (555) 911-3569')
-    email = db.Column(db.String(120), nullable=False, default='care@hospitalflow.ai')
+    email = db.Column(db.String(120), nullable=False, default='care@mediflow.ai')
     address = db.Column(db.String(255), nullable=False, default='1200 Health Science Boulevard, Suite 400, Metro City, MC 98101')
     opening_hours = db.Column(db.String(255), nullable=False, default='24/7 Emergency Care | OPD: Mon - Sat 8:00 AM - 8:00 PM')
     directions_url = db.Column(db.String(255), nullable=True, default='https://maps.google.com')

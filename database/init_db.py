@@ -55,9 +55,9 @@ def apply_safe_migrations(cursor):
 
     # Safely consolidate duplicate receptionist account into single Sarah Jenkins account
     try:
-        cursor.execute("SELECT id FROM users WHERE email = 'receptionist@hospitalflow.ai'")
+        cursor.execute("SELECT id FROM users WHERE email IN ('receptionist@mediflow.ai', 'receptionist@hospitalflow.ai')")
         sarah_row = cursor.fetchone()
-        cursor.execute("SELECT id FROM users WHERE email = 'admin@hospitalflow.ai'")
+        cursor.execute("SELECT id FROM users WHERE email IN ('admin@mediflow.ai', 'admin@hospitalflow.ai')")
         admin_row = cursor.fetchone()
         if admin_row and sarah_row:
             sarah_id = sarah_row[0]
@@ -73,6 +73,33 @@ def apply_safe_migrations(cursor):
         cursor.execute("UPDATE staff SET staff_type = 'Receptionist' WHERE staff_type = 'Admin'")
     except Exception as e:
         print(f"  Note on admin account migration: {e}")
+
+    # Safely update existing records to MediFlow AI branding
+    try:
+        cursor.execute("""
+            UPDATE hospital_settings 
+            SET hospital_name = 'MediFlow General Hospital & Medical Center', 
+                email = 'care@mediflow.ai'
+            WHERE hospital_name LIKE 'HospitalFlow%' OR email LIKE '%hospitalflow.ai'
+        """)
+        cursor.execute("""
+            UPDATE users 
+            SET email = REPLACE(email, '@hospitalflow.ai', '@mediflow.ai')
+            WHERE email LIKE '%@hospitalflow.ai'
+        """)
+        cursor.execute("""
+            UPDATE contact_requests 
+            SET patient_email = REPLACE(patient_email, '@hospitalflow.ai', '@mediflow.ai')
+            WHERE patient_email LIKE '%@hospitalflow.ai'
+        """)
+        cursor.execute("""
+            UPDATE doctor_registration_requests 
+            SET email = REPLACE(email, '@hospitalflow.ai', '@mediflow.ai')
+            WHERE email LIKE '%@hospitalflow.ai'
+        """)
+        print("  + Safely migrated hospital settings and staff emails to MediFlow AI.")
+    except Exception as e:
+        print(f"  Note on MediFlow branding migration: {e}")
 
     # Ensure users role ENUM strictly supports exactly three roles: 'receptionist', 'doctor', 'patient'
     try:
@@ -185,10 +212,10 @@ def apply_safe_migrations(cursor):
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS hospital_settings (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            hospital_name VARCHAR(150) NOT NULL DEFAULT 'HospitalFlow General Hospital & Medical Center',
+            hospital_name VARCHAR(150) NOT NULL DEFAULT 'MediFlow General Hospital & Medical Center',
             phone VARCHAR(30) NOT NULL DEFAULT '+1 (555) 019-2830',
             emergency_phone VARCHAR(30) NOT NULL DEFAULT '+1 (555) 911-3569',
-            email VARCHAR(120) NOT NULL DEFAULT 'care@hospitalflow.ai',
+            email VARCHAR(120) NOT NULL DEFAULT 'care@mediflow.ai',
             address VARCHAR(255) NOT NULL DEFAULT '1200 Health Science Boulevard, Suite 400, Metro City, MC 98101',
             opening_hours VARCHAR(255) NOT NULL DEFAULT '24/7 Emergency Care | OPD: Mon - Sat 8:00 AM - 8:00 PM',
             directions_url VARCHAR(255) NULL DEFAULT 'https://maps.google.com',
@@ -344,10 +371,10 @@ def apply_safe_migrations(cursor):
             INSERT INTO hospital_settings (hospital_name, phone, emergency_phone, email, address, opening_hours, directions_url)
             VALUES (%s, %s, %s, %s, %s, %s, %s)
         """, (
-            'HospitalFlow General Hospital & Medical Center',
+            'MediFlow General Hospital & Medical Center',
             '+1 (555) 019-2830',
             '+1 (555) 911-3569',
-            'care@hospitalflow.ai',
+            'care@mediflow.ai',
             '1200 Health Science Boulevard, Suite 400, Metro City, MC 98101',
             '24/7 Emergency Care | OPD: Mon - Sat 8:00 AM - 8:00 PM',
             'https://maps.google.com'
@@ -359,7 +386,7 @@ def apply_safe_migrations(cursor):
 
 def init_database():
     print("=" * 60)
-    print("HospitalFlow AI - Database Initialization & Safe Migration")
+    print("MediFlow AI - Database Initialization & Safe Migration")
     print("=" * 60)
     print(f"Connecting to MySQL server at {DB_HOST}:{DB_PORT} as '{DB_USER}'...")
 
@@ -421,7 +448,7 @@ def init_database():
         users_to_seed = [
             {
                 'full_name': 'Sarah Jenkins (Lead Receptionist)',
-                'email': 'receptionist@hospitalflow.ai',
+                'email': 'receptionist@mediflow.ai',
                 'phone': '+1 (555) 019-8822',
                 'age': 34,
                 'gender': 'Female',
@@ -430,7 +457,7 @@ def init_database():
             },
             {
                 'full_name': 'Michael Chen (Patient)',
-                'email': 'patient@hospitalflow.ai',
+                'email': 'patient@mediflow.ai',
                 'phone': '+1 (555) 019-3344',
                 'age': 35,
                 'gender': 'Male',
@@ -439,7 +466,7 @@ def init_database():
             },
             {
                 'full_name': 'Dr. Alexander Smith, MD',
-                'email': 'dr.smith@hospitalflow.ai',
+                'email': 'dr.smith@mediflow.ai',
                 'phone': '+1 (555) 019-4567',
                 'age': 45,
                 'gender': 'Male',
@@ -448,7 +475,7 @@ def init_database():
             },
             {
                 'full_name': 'Dr. Priya Patel, MD',
-                'email': 'dr.patel@hospitalflow.ai',
+                'email': 'dr.patel@mediflow.ai',
                 'phone': '+1 (555) 019-7890',
                 'age': 39,
                 'gender': 'Female',
@@ -479,7 +506,7 @@ def init_database():
         conn.commit()
 
         # Step 4: Associate staff records for receptionist and doctors
-        cursor.execute("SELECT id FROM users WHERE email = %s", ('receptionist@hospitalflow.ai',))
+        cursor.execute("SELECT id FROM users WHERE email = %s", ('receptionist@mediflow.ai',))
         rec_user = cursor.fetchone()
         cursor.execute("SELECT id FROM departments WHERE code = 'GP'")
         gp_dept = cursor.fetchone()
@@ -494,7 +521,7 @@ def init_database():
                 print("Staff record created for Lead Receptionist.")
 
         # Associate staff record for Dr. Alexander Smith (General Practice)
-        cursor.execute("SELECT id FROM users WHERE email = %s", ('dr.smith@hospitalflow.ai',))
+        cursor.execute("SELECT id FROM users WHERE email = %s", ('dr.smith@mediflow.ai',))
         smith_user = cursor.fetchone()
         if smith_user and gp_dept:
             cursor.execute("SELECT id FROM staff WHERE user_id = %s", (smith_user[0],))
@@ -507,7 +534,7 @@ def init_database():
                 print("Staff record created for Dr. Alexander Smith (General Practice).")
 
         # Associate staff record for Dr. Priya Patel (Cardiology)
-        cursor.execute("SELECT id FROM users WHERE email = %s", ('dr.patel@hospitalflow.ai',))
+        cursor.execute("SELECT id FROM users WHERE email = %s", ('dr.patel@mediflow.ai',))
         patel_user = cursor.fetchone()
         cursor.execute("SELECT id FROM departments WHERE code = 'CARD'")
         card_dept = cursor.fetchone()
