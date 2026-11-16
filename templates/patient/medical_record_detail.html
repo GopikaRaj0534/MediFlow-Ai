@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Clinical Consultation Summary - HospitalFlow AI{% endblock %}
+{% block title %}Clinical Consultation Summary - MediFlow AI{% endblock %}
 {% block page_title %}Official Consultation Record{% endblock %}
 
 {% block content %}
@@ -22,13 +22,13 @@
         <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--teal-600); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
             <div>
                 <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--navy-900); margin: 0;">
-                    {{ hospital_info.hospital_name if hospital_info else 'HospitalFlow General Hospital' }}
+                    {{ hospital_info.hospital_name if hospital_info else 'MediFlow General Hospital' }}
                 </h2>
                 <div style="font-size: 0.85rem; color: var(--slate-600); margin-top: 4px;">
                     {{ hospital_info.address if hospital_info else '1200 Health Science Blvd' }}
                 </div>
                 <div style="font-size: 0.82rem; color: var(--slate-500); margin-top: 2px;">
-                    Phone: {{ hospital_info.phone if hospital_info else '+1 (555) 019-2830' }} | Email: {{ hospital_info.email if hospital_info else 'care@hospitalflow.ai' }}
+                    Phone: {{ hospital_info.phone if hospital_info else '+1 (555) 019-2830' }} | Email: {{ hospital_info.email if hospital_info else 'care@mediflow.ai' }}
                 </div>
             </div>
             <div style="text-align: right;">
