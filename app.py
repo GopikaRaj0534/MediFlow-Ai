@@ -95,4 +95,4 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=int(os.getenv('PORT', 5000)), help="Port to listen on")
     args, _ = parser.parse_known_args()
     print(f"Starting MediFlow AI on http://127.0.0.1:{args.port} ...")
-    app.run(host='127.0.0.1', port=args.port, debug=True)
+    app.run(host='0.0.0.0', port=args.port, debug=False)
