@@ -2,7 +2,7 @@
 routes/admin_routes.py
 ----------------------
 Legacy Admin routes deprecation router.
-The Admin role has been completely removed from HospitalFlow AI in accordance with
+The Admin role has been completely removed from MediFlow AI in accordance with
 the 3-role architectural mandate (Receptionist, Doctor, Patient).
 All management capabilities have been transferred to the Receptionist portal.
 These legacy routes redirect permanently to their respective Receptionist endpoints.

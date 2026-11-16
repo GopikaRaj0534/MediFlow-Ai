@@ -15,7 +15,7 @@ auth_bp = Blueprint('auth', __name__)
 @auth_bp.route('/')
 def index():
     """
-    Public entry point for HospitalFlow AI.
+    Public entry point for MediFlow AI.
     Renders professional public landing page for visitors.
     If authenticated, redirects to the user's role-specific dashboard.
     """

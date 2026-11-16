@@ -1,7 +1,7 @@
 """
 app.py
 ------
-HospitalFlow AI - AI-Based Hospital Waiting-Time Prediction and Patient Flow Optimization System.
+MediFlow AI - AI-Based Hospital Waiting-Time Prediction and Patient Flow Optimization System.
 Main Flask application entry point using the Application Factory pattern.
 """
 
@@ -79,7 +79,7 @@ def create_app(config_name=None):
         except Exception:
             pass
         return {
-            'app_name': 'HospitalFlow AI',
+            'app_name': 'MediFlow AI',
             'current_year': 2026,
             'hospital_info': setting
         }
@@ -91,8 +91,8 @@ app = create_app()
 
 if __name__ == '__main__':
     import argparse
-    parser = argparse.ArgumentParser(description="Run HospitalFlow AI server")
+    parser = argparse.ArgumentParser(description="Run MediFlow AI server")
     parser.add_argument('--port', type=int, default=int(os.getenv('PORT', 5000)), help="Port to listen on")
     args, _ = parser.parse_known_args()
-    print(f"Starting HospitalFlow AI on http://127.0.0.1:{args.port} ...")
+    print(f"Starting MediFlow AI on http://127.0.0.1:{args.port} ...")
     app.run(host='127.0.0.1', port=args.port, debug=True)
