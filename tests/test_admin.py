@@ -18,10 +18,10 @@ def test_admin_hospital_settings_update(client, app):
     client.post('/login', data={'email': 'admin@test.com', 'password': 'AdminPass123!'}, follow_redirects=True)
 
     response = client.post('/admin/hospital-settings', data={
-        'hospital_name': 'HospitalFlow Medical Center West',
+        'hospital_name': 'MediFlow Medical Center West',
         'phone': '+1 (555) 888-1111',
         'emergency_phone': '+1 (555) 911-0000',
-        'email': 'admin@hospitalflow-west.ai',
+        'email': 'admin@mediflow-west.ai',
         'address': '500 Health Park Drive, West Wing, Metro City',
         'opening_hours': '24/7 Comprehensive Trauma & Emergency',
         'directions_url': 'https://maps.google.com/test'
@@ -32,7 +32,7 @@ def test_admin_hospital_settings_update(client, app):
 
     with app.app_context():
         setting = HospitalSetting.query.first()
-        assert setting.hospital_name == 'HospitalFlow Medical Center West'
+        assert setting.hospital_name == 'MediFlow Medical Center West'
         assert setting.phone == '+1 (555) 888-1111'
         assert setting.emergency_phone == '+1 (555) 911-0000'
 

@@ -60,10 +60,10 @@ def app():
 
         # Seed test hospital setting
         setting = HospitalSetting(
-            hospital_name='HospitalFlow General Hospital & Medical Center',
+            hospital_name='MediFlow General Hospital & Medical Center',
             phone='+1 (555) 019-2830',
             emergency_phone='+1 (555) 911-3569',
-            email='care@hospitalflow.ai',
+            email='care@mediflow.ai',
             address='1200 Health Science Boulevard, Suite 400, Metro City, MC 98101',
             opening_hours='24/7 Emergency Care | OPD: Mon - Sat 8:00 AM - 8:00 PM'
         )

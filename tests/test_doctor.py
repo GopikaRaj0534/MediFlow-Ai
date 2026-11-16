@@ -1,7 +1,7 @@
 """
 tests/test_doctor.py
 --------------------
-Comprehensive automated test suite for HospitalFlow AI Doctor Role & Consultation Workflow:
+Comprehensive automated test suite for MediFlow AI Doctor Role & Consultation Workflow:
 1. Doctor authentication, session redirection, and role boundaries
 2. Strict RBAC (Patient/Receptionist cannot access Doctor, Doctor cannot access Admin)
 3. Doctor availability toggle

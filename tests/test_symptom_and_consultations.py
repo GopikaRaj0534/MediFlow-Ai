@@ -28,8 +28,7 @@ def test_public_landing_page_accessible_unauthenticated(client):
     """Verifies that an unauthenticated visitor visiting / gets the public landing page."""
     response = client.get('/')
     assert response.status_code == 200
-    assert b"HospitalFlow AI" in response.data
-    assert b"Hospital Flow" in response.data
+    assert b"MediFlow AI" in response.data
     assert b"Symptom Checker" in response.data
     assert b"Sign In" in response.data
     assert b"Registration" in response.data

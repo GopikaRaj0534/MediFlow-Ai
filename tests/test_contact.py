@@ -18,9 +18,9 @@ def test_public_contact_page_displays_info(client):
     """Verifies that the /contact endpoint displays real configured hospital contact details."""
     response = client.get('/contact')
     assert response.status_code == 200
-    assert b"HospitalFlow General Hospital" in response.data
+    assert b"MediFlow General Hospital" in response.data
     assert b"555" in response.data  # Phone numbers
-    assert b"care@hospitalflow.ai" in response.data
+    assert b"care@mediflow.ai" in response.data
     assert b"Health Science Boulevard" in response.data
 
 
