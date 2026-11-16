@@ -1,7 +1,7 @@
 """
 services/symptom_service.py
 ---------------------------
-Inference service for the ML-based HospitalFlow AI Symptom Checker:
+Inference service for the ML-based MediFlow AI Symptom Checker:
 - Loads trained Random Forest multi-disease classifier and feature dictionary
 - Validates user input symptoms and encodes them into model feature vectors
 - Generates primary disease prediction with calibrated probability/confidence
