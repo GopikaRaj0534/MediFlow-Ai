@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}HospitalFlow AI - AI-Powered Hospital & Patient Queue Management{% endblock %}
+{% block title %}MediFlow AI - AI-Powered Hospital & Patient Queue Management{% endblock %}
 
 {% block auth_content %}
 <div class="landing-page-wrapper">
@@ -16,7 +16,7 @@
                 <span class="text-gradient">Real-Time AI Triage</span>
             </h1>
             <p class="hero-subtitle">
-                HospitalFlow AI connects patients, doctors, and hospital operations in a unified platform.
+                MediFlow AI connects patients, doctors, and hospital operations in a unified platform.
                 Check symptoms using calibrated machine learning, request physician consultations, and monitor live waiting times with zero guesswork.
             </p>
             <div class="hero-actions">
@@ -111,7 +111,7 @@
         <div class="section-container">
             <div class="section-header text-center">
                 <span class="section-tag">Step-by-Step Patient Journey</span>
-                <h2 class="section-title">How HospitalFlow AI Works</h2>
+                <h2 class="section-title">How MediFlow AI Works</h2>
                 <p class="section-desc">A frictionless experience connecting patients and clinicians through intelligent triage.</p>
             </div>
 
@@ -150,7 +150,7 @@
                 <div class="advisory-content">
                     <h3 style="color: var(--slate-900); margin-bottom: 0.5rem; font-size: 1.25rem;">Medical Safety &amp; Clinical Governance</h3>
                     <p style="color: var(--slate-600); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.75rem;">
-                        <strong>HospitalFlow AI is a clinical decision-support and patient flow optimization system.</strong> The AI Symptom Checker provides preliminary informational screenings based on trained machine-learning patterns and does NOT substitute for qualified medical diagnosis, emergency services, or professional healthcare advice.
+                        <strong>MediFlow AI is a clinical decision-support and patient flow optimization system.</strong> The AI Symptom Checker provides preliminary informational screenings based on trained machine-learning patterns and does NOT substitute for qualified medical diagnosis, emergency services, or professional healthcare advice.
                     </p>
                     <p style="color: #b91c1c; font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 6px;">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -166,7 +166,7 @@
         <div class="section-container">
             <div class="section-header text-center">
                 <span class="section-tag">Hospital Contact &amp; Hours</span>
-                <h2 class="section-title">{{ hospital_info.hospital_name if hospital_info else 'HospitalFlow Medical Center' }}</h2>
+                <h2 class="section-title">{{ hospital_info.hospital_name if hospital_info else 'MediFlow Medical Center' }}</h2>
                 <p class="section-desc">Our medical staff and emergency department are available around the clock.</p>
             </div>
 
@@ -195,7 +195,7 @@
                     </div>
                     <h4>Hours of Operation</h4>
                     <p>{{ hospital_info.opening_hours if hospital_info else '24/7 Emergency Care | OPD: Mon - Sat 8:00 AM - 8:00 PM' }}</p>
-                    <p><strong>Email:</strong> {{ hospital_info.email if hospital_info else 'care@hospitalflow.ai' }}</p>
+                    <p><strong>Email:</strong> {{ hospital_info.email if hospital_info else 'care@mediflow.ai' }}</p>
                 </div>
             </div>
 
@@ -213,7 +213,7 @@
             <div class="footer-brand">
                 <div class="footer-logo">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                    <span>HospitalFlow AI</span>
+                    <span>MediFlow AI</span>
                 </div>
                 <p>AI-Based Hospital Waiting-Time Prediction, Patient Flow Optimization, and Intelligent Symptom Screening.</p>
             </div>
@@ -239,7 +239,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; {{ current_year }} HospitalFlow AI. All rights reserved. Hospital management &amp; patient flow system.</p>
+            <p>&copy; {{ current_year }} MediFlow AI. All rights reserved. Hospital management &amp; patient flow system.</p>
         </div>
     </footer>
 </div>

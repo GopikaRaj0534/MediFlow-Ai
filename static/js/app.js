@@ -1,5 +1,5 @@
 /**
- * HospitalFlow AI - Client-Side Interactivity & Polling
+ * MediFlow AI - Client-Side Interactivity & Polling
  */
 
 document.addEventListener('DOMContentLoaded', () => {

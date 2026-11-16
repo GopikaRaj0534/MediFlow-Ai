@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %}Hospital Contact &amp; Clinical Information - HospitalFlow AI{% endblock %}
+{% block title %}Hospital Contact &amp; Clinical Information - MediFlow AI{% endblock %}
 {% block page_title %}Hospital Contact Directory &amp; Location{% endblock %}
 
 {% block content %}
 <div style="max-width: 900px; margin: 0 auto;">
     <div style="margin-bottom: 2rem;">
         <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--navy-900);">
-            {{ hospital_info.hospital_name if hospital_info else 'HospitalFlow General Hospital & Medical Center' }}
+            {{ hospital_info.hospital_name if hospital_info else 'MediFlow General Hospital & Medical Center' }}
         </h2>
         <p style="color: var(--slate-500); font-size: 0.95rem;">
             Official hospital contact directory, emergency lines, acute care services, and physical address.
@@ -55,8 +55,8 @@
             </div>
             <h4>Patient Care &amp; Support</h4>
             <div style="font-size: 1.05rem; font-weight: 700;">
-                <a href="mailto:{{ hospital_info.email if hospital_info else 'care@hospitalflow.ai' }}">
-                    {{ hospital_info.email if hospital_info else 'care@hospitalflow.ai' }}
+                <a href="mailto:{{ hospital_info.email if hospital_info else 'care@mediflow.ai' }}">
+                    {{ hospital_info.email if hospital_info else 'care@mediflow.ai' }}
                 </a>
             </div>
             <p style="font-size: 0.85rem; color: var(--slate-500); margin: 0;">
@@ -117,7 +117,7 @@
 <div class="public-container">
     <div style="margin-bottom: 2rem; text-align: center;">
         <h1 style="font-size: 2rem; font-weight: 800; color: var(--navy-900);">
-            {{ hospital_info.hospital_name if hospital_info else 'HospitalFlow General Hospital & Medical Center' }}
+            {{ hospital_info.hospital_name if hospital_info else 'MediFlow General Hospital & Medical Center' }}
         </h1>
         <p style="color: var(--slate-500); font-size: 1.05rem; max-width: 650px; margin: 0.5rem auto 0;">
             Comprehensive outpatient care, emergency clinical services, and real-time waiting-time prediction.
@@ -165,8 +165,8 @@
             </div>
             <h4>Patient Care Email</h4>
             <div style="font-size: 1.05rem; font-weight: 700;">
-                <a href="mailto:{{ hospital_info.email if hospital_info else 'care@hospitalflow.ai' }}">
-                    {{ hospital_info.email if hospital_info else 'care@hospitalflow.ai' }}
+                <a href="mailto:{{ hospital_info.email if hospital_info else 'care@mediflow.ai' }}">
+                    {{ hospital_info.email if hospital_info else 'care@mediflow.ai' }}
                 </a>
             </div>
             <p style="font-size: 0.85rem; color: var(--slate-500);">
